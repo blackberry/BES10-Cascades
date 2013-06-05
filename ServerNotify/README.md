@@ -68,7 +68,7 @@ Usually you can pass the signed bar file to your BES administrator and have them
 
 ## More Info
 
-* [TODO: link to blog post](http://blah.com)
+* [Push Blog Post](http://bizblog.blackberry.com/2013/06/push-enterprise-apps/)
 * [BlackBerry Enterprise Push Development Guide](http://docs.blackberry.com/en/admin/deliverables/50897/index.jsp?name=Development+Guide+-+Push+Service+for+Enterprise+Apps6.2&language=English&userType=2&category=BlackBerry+Device+Service&subCategory=)
 
 
