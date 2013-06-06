@@ -14,7 +14,10 @@ The sample code for this application is Open Source under the [Apache 2.0 Licens
 
 * [Brent Thornton](http://www.twitter.com/brentthornton32)
 * [John Mutter](http://www.twitter.com/muttejo)
-* [Garett Beukeboom](https://twitter.com/garettBeuk)
+
+**Special Thanks To**
+* [Garett Beukeboom](https://twitter.com/garettBeuk) for the simple push starter app.
+* [Maurice White](https://twitter.com/MoReeseMo) for the last minute server additions and testing.
 
 **Dependencies**
 
