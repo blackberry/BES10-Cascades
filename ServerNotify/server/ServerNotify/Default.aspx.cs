@@ -28,7 +28,7 @@ using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using System.Xml.Linq;
 
-public partial class _Default : System.Web.UI.Page 
+public partial class _Default : System.Web.UI.Page
 {
     private static ArrayList textData = new ArrayList();
 
@@ -49,15 +49,29 @@ public partial class _Default : System.Web.UI.Page
     {
         String serverName = tbServerName.Text;
         String serverIP = tbServerIP.Text;
-        StreamWriter tw = new StreamWriter("c:\\test\\Servers.txt", true);
-        String strVar = serverName + "^" + serverIP;
-        tw.WriteLine(strVar);
-        tw.Close();
-        readTxtFile();
-        displayArray();
+        String serverListPath = @"c:\\test\\";
+        String serverListFile = "Servers.txt";
+        try
+        {
+            if (!System.IO.Directory.Exists(serverListPath))
+            {
+                System.IO.Directory.CreateDirectory(serverListPath);
+            }
+            StreamWriter tw = new StreamWriter(serverListPath + serverListFile, true);
+            String strVar = serverName + "^" + serverIP;
+            tw.WriteLine(strVar);
+            tw.Close();
+            readTxtFile();
+            displayArray();
+        }
+        catch (Exception err)
+        {
+            //Display Error in textbox
+            tbResults.Text += "ERROR: In btnAddServer_Click() " + err.ToString() + Environment.NewLine;
+        }
     }
 
-    public bool CheckInternetConnection(String ipAddress) 
+    public bool CheckInternetConnection(String ipAddress)
     {
         bool result = false;
         Ping p = new Ping();
@@ -131,7 +145,7 @@ public partial class _Default : System.Web.UI.Page
         int timeInterval = Convert.ToInt32(tbTimerInterval.Text) * 1000;
         Timer1.Interval = timeInterval;
         Timer1.Enabled = true;
-        
+
     }
     protected void Button2_Click(object sender, EventArgs e)
     {
@@ -149,7 +163,7 @@ public partial class _Default : System.Web.UI.Page
         //Perform scheduled Action
         for (int i = 0; i < textData.Count; i++)
         {
-            
+
             String[] lineData = textData[i].ToString().Split('^');
             bool pinger = CheckInternetConnection(lineData[1]);
             if (pinger == false)
@@ -168,7 +182,7 @@ public partial class _Default : System.Web.UI.Page
         }
         displayArray();
         Timer1.Enabled = true;
-        
+
     }
 
     public void sendAlert(String serverName, String serverIP)
