@@ -8,6 +8,7 @@ The sample code for this application is Open Source under the [Apache 2.0 Licens
 
 * Client: [BlackBerry 10 Cascades SDK](http://developer.blackberry.com/cascades/)
 * Server: Microsoft .NET C# Application
+* This sample has been tested using the 10.1.0.1020 and 10.1.0.1720 SDK
 
 **Author(s)**
 
@@ -19,6 +20,7 @@ The sample code for this application is Open Source under the [Apache 2.0 Licens
 
 1. You will need a BlackBerry 10 smartphone to test.
 2. You with need a BlackBerry Device Service Server or access to one.
+3. A .NET web server to run the monitoring.
 
 ## Initial Client Setup
 
@@ -61,14 +63,14 @@ Usually you can pass the signed bar file to your BES administrator and have them
 1. Launch the application once on the device.
 2. Either leave the application open or close it. Now that it has registered with the push service once, the app can receive pushes while open or closed.
 3. Visit the Server page Default.aspx
-4. Enter a server IP. If you want to test failure (when a push occurs) enter an IP address you know will fail
+4. Enter a server Name and IP and click Add Server. If you want to test failure (when a push occurs) enter an IP address you know will fail
 5. Click Start Monitoring and within the interval you specified a push will occur and you should see the dialog box show up.
 
 *Note: You should only use global dialog boxes in urgent situations. You can push behind the scenes, notify using the hub, or some other method for processing non-urgent items.
 
 ## More Info
 
-* [TODO: link to blog post](http://blah.com)
+* [Push Blog Post](http://bizblog.blackberry.com/2013/06/push-enterprise-apps/)
 * [BlackBerry Enterprise Push Development Guide](http://docs.blackberry.com/en/admin/deliverables/50897/index.jsp?name=Development+Guide+-+Push+Service+for+Enterprise+Apps6.2&language=English&userType=2&category=BlackBerry+Device+Service&subCategory=)
 
 
