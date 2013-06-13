@@ -1,0 +1,125 @@
+[
+    {
+        "Title": "Operations Team",
+        "list": [
+            {
+                "Name": "John Doe",
+                "Role": "Sr. Vice President, Operations",
+                "OfficePhone": "519 555-1111",
+                "CellPhone": "519 555-1222",
+                "Email": "john.doe@email.xyz.com",
+                "BBPin": "1111111F",
+                "Backup": "Jason Spencer"
+            },
+            {
+                "Name": "Jason Spencer",
+                "Role": "Manager, Manufacturing Operations",
+                "OfficePhone": "519 555-2111",
+                "CellPhone": "519 555-2222",
+                "Email": "john.flow@Email.xyz.com",
+                "BBPin": "2222222F",
+                "Backup": "undefined"
+            },
+            {
+                "Name": "Jack Smith",
+                "Role": "Manager, Transportation Operations",
+                "OfficePhone": "519 555-3111",
+                "CellPhone": "519 555-3222",
+                "Email": "jack.smith@email.xyz.com",
+                "BBPin": "3333333F",
+                "Backup": "Julian Migs"
+            }
+        ]
+    },
+    {
+        "Title": "Support Team",
+        "list": [
+            {
+                "Name": "Julian Migs",
+                "Role": "Team Planner",
+                "OfficePhone": "519 555-4111",
+                "CellPhone": "519 555-4222",
+                "Email": "julian@email.xyz.com",
+                "BBPin": "undefined",
+                "Backup": "Ricky Williams"
+            },
+            {
+                "Name": "Ricky Williams",
+                "Role": "Vice President, Plannning",
+                "OfficePhone": "519 555-5111",
+                "CellPhone": "519 555-2222",
+                "Email": "ricky@email.xyz.com",
+                "BBPin": "undefined",
+                "Backup": "Neville DeGauss"
+            },
+            {
+                "Name": "Neville DeGauss",
+                "Role": "Feline Affairs Specialist",
+                "OfficePhone": "519 555-6111",
+                "CellPhone": "519 555-6222",
+                "Email": "Neville@email.xyz.com",
+                "BBPin": "undefined",
+                "Backup": "Randy"
+            },
+            {
+                "Name": "Randy Whitt",
+                "Role": "Assistant Weekend Supervisor",
+                "OfficePhone": "519 555-7111",
+                "Email": "randy@email.xyz.com",
+                "BBPin": "undefined",
+                "Backup": "Julian Migs"
+            }
+        ]
+    },
+    {
+        "Title": "Communications Team",
+        "list": [
+            {
+                "Name": "Linus Saarinen",
+                "Role": "Chief Food Executive",
+                "OfficePhone": "519 555-8111",
+                "CellPhone": "519 555-8222",
+                "Email": "linus.saarinen@email.xyz.com",
+                "BBPin": "undefined",
+                "Backup": "Lucy"
+            },
+            {
+                "Name": "Lucy Liu",
+                "Role": "Assistant Pianist",
+                "CellPhone": "519 555-9222",
+                "Email": "lucy.liu@email.xyz.com",
+                "BBPin": "9999999F",
+                "Backup": "Linus"
+            }
+        ]
+    },
+    {
+        "Title": "Testing Team",
+        "list": [
+            {
+                "Name": "Steven Cho",
+                "Role": "Head Pachyderm Handler",
+                "OfficePhone": " 519 555-8111",
+                "CellPhone": " 519 555-8222",
+                "Email": "steven.cho@email.xyz.com",
+                "Backup": " Lucy"
+            },
+            {
+                "Name": "Rakesh Nambiar",
+                "Role": "Canine Specialist",
+                "OfficePhone": " 519 555-9111",
+                "CellPhone": " 519 555-9222",
+                "Email": "rakesh.nambiar@email.xyz.com",
+                "BBPin": "9996999F"
+            },
+            {
+                "Name": "Mika Sarinen",
+                "Role": "T-Rex Wrangler",
+                "OfficePhone": " 519 555-9111",
+                "CellPhone": " 519 555-9222",
+                "Email": "mika.sarinen@email.xyz.com",
+                "BBPin": "9925469F"
+            }
+        ]
+    }
+]
