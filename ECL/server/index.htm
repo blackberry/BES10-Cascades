@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<!--
+* Copyright 2013 BlackBerry Limited.
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*******************************************************************************
+* This is a test HTML file the purpose of which is ti test PUSH Notifications.
+* for the ECL Native BB10 Application.
+*******************************************************************************
+-->
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Emergency Contact list</title>
+
+    </head>
+    <body>
+        <h3>Emergency Contact list Test</h3>
+        Destination Email:
+        <br />
+        <input id="email" type="text" value=""/>
+        <br />
+        BES Address:
+        <br />
+        <input id="bes" type="text" value="65.113.176.171"/>
+        <br />
+        MDS-CS Listen Port:
+        <br />
+        <input id="mdsPort" type="text" />
+        <br />
+        Application Listen Port:
+        <br />
+        <input id="appPort" type="text" value="bb10.cascades.ecl"/>
+        <br/>
+        <tr>
+            <td>
+            <input type="radio" name="list-option" value="ECL-1" checked="true" onclick="updateEclContents('ECL-1')">
+            ECL-1
+            </td>
+            <td>
+            <input type="radio" name="list-option" value="ECL-2" onclick="updateEclContents('ECL-2')">
+            ECL-2
+            </td>
+            <td>
+            <input type="radio" name="list-option" value="ECL-2" onclick="updateEclContents('ECL-3')">
+            ECL-3
+            </td>
+        </tr>
+        <br/>
+        Content to Push:
+        <br/>
+        <textarea id="content" rows="8" cols="50"></textarea>
+        <br/>
+        <input type="button" onclick="doPost();" value="Do Push"/>
+        <div id="result"></div>
+        <summary>
+            <b>Emergency Contact List:</b>
+            <br />
+            When the Emergency Contact List(ECL) first runs the Contact list be empty.
+            This web app provides the ability to send emergency contact list to the application for testing and
+            demonstrations. It can be run via the browser on your PC as long as JavaScript and Ajax are enabled.
+            Enter the email address of user to whom the EC list should be sent. The contact list to be sent can
+            be selected via radio buttons or manually entered. Click on the 'Do Push' button to send the request.
+            <br/>
+            <br/>
+            The EC list will be received on the device just seconds after it is sent and a notification
+            will be added to the notification hub and a splat to application icon.
+            From the application, user can send emails, call to the Emergency contact and the the emergency contact can be added to the device address book.
+        </summary>
+        <script type="text/javascript">
+                
+            var teamList1 = [
+                {
+                    "Title": "USA Team",
+                    "list": [
+                        {
+                            "Name": "Wild Kumar",
+                            "Role": "Sr. Vice President, Operations",
+                            "OfficePhone": "519 555-1111",
+                            "CellPhone": "519 555-1222",
+                            "Email": "john.doe@email.xyz.com",
+                            "BBPin": "1111111F",
+                            "Backup": "Jason Spencer"
+                        },
+                        {
+                            "Name": "Danis rathore",
+                            "Role": "Manager, Manufacturing Operations",
+                            "OfficePhone": "519 555-2111",
+                            "CellPhone": "519 555-2222",
+                            "Email": "john.flow@Email.xyz.com",
+                            "BBPin": "2222222F",
+                            "Backup": "undefined"
+                        },
+                        {
+                            "Name": "Shravanthi Smith",
+                            "Role": "Manager, Transportation Operations",
+                            "OfficePhone": "519 555-3111",
+                            "CellPhone": "9980504857",
+                            "Email": "jack.smith@email.xyz.com",
+                            "BBPin": "3333333F",
+                            "Backup": "Julian Migs"
+                        }
+                    ]
+                },
+                {
+                    "Title": "Indian Team",
+                    "list": [
+                        {
+                            "Name": "Anshuman Migs",
+                            "Role": "Team Planner",
+                            "OfficePhone": "519 555-4111",
+                            "CellPhone": "519 555-4222",
+                            "Email": "julian@email.xyz.com",
+                            "BBPin": "undefined",
+                            "Backup": "Ricky Williams"
+                        },
+                        {
+                            "Name": "Rajesh Williams",
+                            "Role": "Vice President, Plannning",
+                            "OfficePhone": "519 555-5111",
+                            "CellPhone": "519 555-2222",
+                            "Email": "ricky@email.xyz.com",
+                            "BBPin": "undefined",
+                            "Backup": "Neville DeGauss"
+                        },
+                        {
+                            "Name": "Prashanth DeGauss",
+                            "Role": "Feline Affairs Specialist",
+                            "OfficePhone": "519 555-6111",
+                            "CellPhone": "519 555-6222",
+                            "Email": "Neville@email.xyz.com",
+                            "BBPin": "undefined",
+                            "Backup": "Randy"
+                        },
+                        {
+                            "Name": "Subhash Whitt",
+                            "Role": "Assistant Weekend Supervisor",
+                            "OfficePhone": "519 555-7111",
+                            "Email": "randy@email.xyz.com",
+                            "BBPin": "undefined",
+                            "Backup": "Julian Migs"
+                        }
+                    ]
+                },
+                {
+                    "Title": "Project Team",
+                    "list": [
+                        {
+                            "Name": "Doreen Saarinen",
+                            "Role": "Project Manager",
+                            "OfficePhone": "519 555-8111",
+                            "CellPhone": "519 555-8222",
+                            "Email": "linus.saarinen@email.xyz.com",
+                            "BBPin": "undefined",
+                            "Backup": "Lucy"
+                        },
+                        {
+                            "Name": "Neil Liu Rao",
+                            "Role": "Consultant",
+                            "CellPhone": "519 555-9222",
+                            "Email": "lucy.liu@email.xyz.com",
+                            "BBPin": "9999999F",
+                            "Backup": "subhash"
+                        }
+                    ]
+                },
+                {
+                    "Title": "Account Team",
+                    "list": [
+                        {
+                            "Name": "Arun Cho",
+                            "Role": "Head Accounts",
+                            "OfficePhone": " 519 555-8111",
+                            "CellPhone": " 519 555-8222",
+                            "Email": "steven.cho@email.xyz.com",
+                            "Backup": " Lucy"
+                        },
+                        {
+                            "Name": "Rakesh bhatt",
+                            "Role": "Sr. Programmer",
+                            "OfficePhone": " 519 555-9111",
+                            "CellPhone": " 519 555-9222",
+                            "Email": "rakesh.nambiar@email.com",
+                            "BBPin": "9996999F"
+                        }
+                    ]
+                }
+            ];
+
+            var teamList2 = [
+                {
+                    "Title": "Communication Team",
+                    "list": [
+                        {
+                            "Name": "Rohit Kumar",
+                            "Role": "Sr. Vice President, Communication",
+                            "OfficePhone": "519 555-1111",
+                            "CellPhone": "519 555-1222",
+                            "Email": "john.doe@email.xyz.com",
+                            "BBPin": "1111111F",
+                            "Backup": "Jason Spencer"
+                        },
+                        {
+                            "Name": "prakruti Johnson",
+                            "Role": "Manager, Manufacturing Operations",
+                            "OfficePhone": "519 555-2111",
+                            "CellPhone": "519 555-2222",
+                            "Email": "john.flow@Email.xyz.com",
+                            "BBPin": "2222222F",
+                            "Backup": "undefined"
+                        },
+                    ]
+                },
+                {
+                    "Title": "Project Team",
+                    "list": [
+                        {
+                            "Name": "Sonalika Migs",
+                            "Role": "Team Planner",
+                            "OfficePhone": "519 555-4111",
+                            "CellPhone": "519 555-4222",
+                            "Email": "julian@email.xyz.com",
+                            "BBPin": "undefined",
+                            "Backup": "Ricky Williams"
+                        },
+                        {
+                            "Name": "Godan Williams",
+                            "Role": "Vice President, Plannning",
+                            "OfficePhone": "519 555-5111",
+                            "CellPhone": "519 555-2222",
+                            "Email": "ricky@email.xyz.com",
+                            "BBPin": "undefined",
+                            "Backup": "Neville DeGauss"
+                        },
+                    ]
+                },
+                {
+                    "Title": "Media Group",
+                    "list": [
+                        {
+                            "Name": "Madan Saarinen",
+                            "Role": "Chief Media Group",
+                            "OfficePhone": "519 555-8111",
+                            "CellPhone": "519 555-8222",
+                            "Email": "linus.saarinen@email.xyz.com",
+                            "BBPin": "undefined",
+                            "Backup": "Lucy"
+                        },
+                        {
+                            "Name": "Archan gosh",
+                            "Role": "Assistant Pianist",
+                            "CellPhone": "519 555-9222",
+                            "Email": "lucy.liu@email.xyz.com",
+                            "BBPin": "9999999F",
+                            "Backup": "subhash"
+                        }
+                    ]
+                }
+            ];
+            var teamList3 = [
+                {
+                    "Title": "Research and development",
+                    "list": [
+                        {
+                            "Name": "Somesh",
+                            "Role": "Head RnD",
+                            "OfficePhone": "519 555-1111",
+                            "CellPhone": "519 555-1222",
+                            "Email": "somesh.xyz@email.com",
+                            "BBPin": "1111111F",
+                            "Backup": "Jason Spencer"
+                        },
+                        {
+                            "Name": "Janardhan Johnson",
+                            "Role": "Manager, RnD",
+                            "OfficePhone": "519 555-2111",
+                            "CellPhone": "519 555-2222",
+                            "Email": "john.flow@Email.xyz.com",
+                            "BBPin": "2222222F",
+                            "Backup": "undefined"
+                        },
+                    ]
+                },
+                {
+                    "Title": "Comm, Media and Technology",
+                    "list": [
+                        {
+                            "Name": "Adesh Biwal",
+                            "Role": "Team Planner",
+                            "OfficePhone": "519 555-4111",
+                            "CellPhone": "519 555-4222",
+                            "Email": "julian@email.xyz.com",
+                            "BBPin": "undefined",
+                            "Backup": "Ricky Williams"
+                        },
+                        {
+                            "Name": "Ramesh Williams",
+                            "Role": "Vice President, Plannning",
+                            "OfficePhone": "519 555-5111",
+                            "CellPhone": "519 555-2222",
+                            "Email": "ricky@email.xyz.com",
+                            "BBPin": "undefined",
+                            "Backup": "Neville DeGauss"
+                        },
+                    ]
+                },
+                {
+                    "Title": "Foods and Beverages Team",
+                    "list": [
+                        {
+                            "Name": "Foody Sahil",
+                            "Role": "Chief Food Executive",
+                            "OfficePhone": "519 555-8111",
+                            "CellPhone": "519 555-8222",
+                            "Email": "linus.saarinen@email.xyz.com",
+                            "BBPin": "undefined",
+                            "Backup": "Lucy"
+                        },
+                        {
+                            "Name": "Alaukik Rao",
+                            "Role": "Director",
+                            "CellPhone": "519 555-9222",
+                            "Email": "lucy.liu@email.xyz.com",
+                            "BBPin": "9999999F",
+                            "Backup": "subhash"
+                        }
+                    ]
+                }
+            ];                                
+                
+            var jsonStr = JSON.stringify(teamList1);
+            var contentArea = document.getElementById("content");
+            contentArea.value = jsonStr;
+            function updateEclContents(selectedList)
+            {
+                //alert(selectedList);
+                switch(selectedList)
+                {
+                case "ECL-1":
+                    var jsonStr = JSON.stringify(teamList1);
+                    var contentArea = document.getElementById("content");
+                    contentArea.value = jsonStr;
+                    //alert("ECL-1");
+                    break;
+                case "ECL-2":
+                    var jsonStr = JSON.stringify(teamList2);
+                    var contentArea = document.getElementById("content");
+                    contentArea.value = jsonStr;
+                    //alert("ECL-2");
+                    break;              
+                case "ECL-3":
+                    var jsonStr = JSON.stringify(teamList3);
+                    var contentArea = document.getElementById("content");
+                    contentArea.value = jsonStr;
+                    //alert("ECL-3");
+                    break;
+                }
+            }
+            function doPost(){
+                var xmlhttp = new XMLHttpRequest();
+                
+                var bes = document.getElementById("bes").value;
+                var mdsPort = document.getElementById("mdsPort").value;
+                var email = document.getElementById("email").value;
+                var appPort = document.getElementById("appPort").value;
+                var content = document.getElementById("content").value;
+                
+                xmlhttp.open("POST", "http://" + bes + ":" + mdsPort + "/push?DESTINATION=" + email + "&PORT=" + appPort + "&REQUESTURI=/", true);
+                xmlhttp.onreadystatechange=function() {
+                    if (xmlhttp.readyState==4) {
+                        alert(" xmlhttp.readyState = "+xmlhttp.readyState + " xmlhttp.status= "+ xmlhttp.status);
+                        alert(" SUCCESS" );
+                        document.getElementById("result").innerHtml = "Success";
+                    }
+                }
+                
+                xmlhttp.setRequestHeader("Content-Type", "text/plain");
+                
+                xmlhttp.send(content);
+                alert("Request Sent");
+            }
+        </script>
+    </body>
+</html>
