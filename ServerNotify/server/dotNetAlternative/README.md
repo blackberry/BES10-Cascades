@@ -17,13 +17,16 @@ The sample code for this application is Open Source under the [Apache 2.0 Licens
 
 ## Options for Push Payload
 
-The push payload is separated into 4 segments (delimeted by |). The first is the priority (see Priority section below for explaination). The second is the Title of the push. The third is the description. Finally the forth is a url (ie. could be a url of the server you are alerting on).
+The push payload is separated into 4 segments (delimeted by |). The first is the priority (see Priority section below for explaination). The second is the Title of the push. The third is the Description. Finally the forth is a url (ie. could be a url of the server you are alerting on).
 
 **Priority**
 
 Priority can be set to 0, 1, or 2.
+
 0 - No notification. Will only show up in the push list if the application is open.
+
 1 - Notification in the hub (if app isn't in foreground). Will show up in the push list if the application is closed or open in foreground.
+
 2 - Will popup a dialog alerting the user of the push. Will show up in the application push list.
 
 ## Bug Reporting and Feature Requests
