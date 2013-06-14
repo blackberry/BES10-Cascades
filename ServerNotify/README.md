@@ -48,6 +48,7 @@ The sample code for this application is Open Source under the [Apache 2.0 Licens
 ## Deployment
 
 Usually you can pass the signed bar file to your BES administrator and have them:
+
 1. Add it to the BDS.
 2. Add it to a software configuration.
 3. Apply the software configuration to the user account you are testing with.
