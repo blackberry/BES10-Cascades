@@ -24,6 +24,7 @@ The sample code for this application is Open Source under the [Apache 2.0 Licens
 1. You will need a BlackBerry 10 smartphone to test.
 2. You with need a BlackBerry Device Service Server or access to one.
 3. A .NET web server to run the monitoring (optional).
+
 *Note: If you don't use .NET on the backend you can use any server side technology that can make an HTTP POST. You create the POST in a similar manner to the C# example provided.
 
 ## Initial Client Setup
