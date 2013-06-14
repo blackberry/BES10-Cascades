@@ -1,4 +1,4 @@
-# ServerNotify Server JavaScript Implementation
+# ServerNotify: Server JavaScript Implementation
 
 *Note: The JavaScript version is very bare-bones and meant to be a manual push.
 
