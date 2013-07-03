@@ -1,0 +1,9 @@
+com.rim.tad.tools.wst.jsdt.core.codeComplete.argumentPrefixes=
+com.rim.tad.tools.wst.jsdt.core.codeComplete.argumentSuffixes=
+com.rim.tad.tools.wst.jsdt.core.codeComplete.fieldPrefixes=
+com.rim.tad.tools.wst.jsdt.core.codeComplete.fieldSuffixes=
+com.rim.tad.tools.wst.jsdt.core.codeComplete.localPrefixes=
+com.rim.tad.tools.wst.jsdt.core.codeComplete.localSuffixes=
+com.rim.tad.tools.wst.jsdt.core.codeComplete.staticFieldPrefixes=
+com.rim.tad.tools.wst.jsdt.core.codeComplete.staticFieldSuffixes=
+eclipse.preferences.version=1
