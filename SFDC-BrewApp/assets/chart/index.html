@@ -1,0 +1,229 @@
+<html>
+	<head>
+	  <script src="jquery-1.8.3.min.js" type="text/javascript"></script>
+	  <script src="raphael-min.js" type="text/javascript"></script>
+	  <script src="elycharts.js" type="text/javascript"></script>
+	  
+	  <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+	  
+  	<style type="text/css">
+    	body {
+      	margin: 0px;
+      	background: black;
+    	}
+  	</style>
+	  
+	  <script type="text/javascript">
+	    
+	    BridgeState = {
+    		Initializing: 0,
+    		Ready: 1
+    	}
+    	
+    	BridgeCommand = {
+    		BridgeState: 	"BridgeCommandBridgeState", // out
+    		Debug: 			  "BridgeCommandDebug", // out
+    		ShowData:		  "BridgeCommandShowData", // ing
+    	}
+    	
+    	var bridgeState = BridgeState.Initializing;
+    	
+    	
+    	function cascadesDebug(statement) {
+    		var message = getMessage(BridgeCommand.Debug, statement);
+    		
+    		if ( typeof navigator.cascades != 'undefined' ) {
+	        postMessage(message);
+	      } else {
+	      	console.log(message);
+	      }
+    	}
+    	function setBridgeState(state) {
+    		bridgeState = state;
+    		postMessage(getMessage(BridgeCommand.BridgeState, state));
+    	}
+	    function postMessage(message) {
+	      if ( typeof navigator.cascades != 'undefined' ) {
+        	navigator.cascades.postMessage(message);
+        } else {
+        	console.log(message);
+        }
+      }
+      function getMessage(cmd, value) {
+    		return cmd+"::"+value;
+    	}
+	    function makeChart(data) {
+        $("#chart").chart('clear'); 
+        
+	      var keys = [];
+	      var values = [];
+	      $.each(data, function(key, value) {
+  	      keys.push(key);
+  	      values.push(value);
+	      });
+  	    $("#chart").chart({
+          template: "line-chart",
+          values: {
+            serie1: values
+          },
+          labels: keys
+        });
+      }
+	    
+	    $(document).ready(function() {
+  	    /*makeChart({
+    	    "Jan": 22,
+    	    "Feb": 25,
+    	    "Mar": 48,
+    	    "Apr": 65,
+    	    "May": 500
+  	    });*/
+  	    
+  	    setBridgeState(BridgeState.Ready);
+	    });
+	    
+	    
+	    $.elycharts.templates['line-chart'] = {
+        type: "line",
+        style: {
+          "background-color": "#222"
+        },
+        margins: [10, 55, 25, 65],
+        defaultSeries: {
+          rounded: false,
+          plotProps: {
+            stroke: "white",
+            "stroke-width": 2
+          },
+          dot: true,
+          dotProps: {
+            stroke: "#045900",
+            "stroke-width": 2
+          }
+        },
+        series: {
+          serie1: {
+            color: "#07a000"
+          }
+        },
+        defaultAxis: {
+          labels: true,
+          labelsProps: {
+            fill: "white"
+          }
+        },
+        axis : {
+          x : {
+            labelsAnchor : "middle",
+            labelsProps : {
+              font : "16px Verdana"
+            }
+          },
+          l : {
+            labelsSkip: 1,
+            titleProps : {
+              fill : "white"
+            },
+            labelsProps : {
+              font : "16px Verdana"
+            },
+            //suffix : "K",
+            titleDistance : 50
+          }
+        },
+        features: {
+          grid : {
+           draw: [true, false], // draw both x and y grids
+           forceBorder: [false, false, true, false], // force grid for external border
+           props: {
+            stroke: "#777"
+           }
+          },
+        }
+      };
+      
+      $.elycharts.templates['bar-chart'] = {
+        type: "line",
+        style: {
+          "background-color": "black"
+        },
+        margins: [10, 55, 35, 65],
+        defaultSeries: {
+          type : "bar",
+          rounded: false,
+          plotProps: {
+            "stroke-width": 2
+          },
+          dot: true,
+          dotProps: {
+            stroke: "black",
+            "stroke-width": 2
+          },
+          tooltip: {
+            frameProps: {
+              opacity: 0.75
+            }
+          }
+        },
+        series: {
+          serie1: {
+            color: "red"
+          }
+        },
+        defaultAxis: {
+          labels: true,
+          labelsProps: {
+            fill: "white"
+          }
+        },
+        axis : {
+          x : {
+            labelsProps : {
+              font : "16px Verdana"
+            }
+          },
+          l : {
+            titleProps : {
+              fill : "white"
+            },
+            labelsProps : {
+             font : "16px Verdana"
+            },
+            titleDistance : 50
+          }
+        },
+        features: {
+          grid : {
+           draw : [true, true],
+           props : {
+            "stroke-dasharray" : "-"
+           }
+          },
+        }
+      };
+      
+      function onMessageRecieved(message) {
+        cascadesDebug("message recieved ["+message+"]");
+        var components = message.split('::');
+      	var cmd = components[0];
+      	var value = components[1];
+      	
+      	if ( cmd == BridgeCommand.ShowData ) {
+          cascadesDebug("making chart ["+value+"]");
+      		makeChart(JSON.parse(value));
+      	}
+      }
+	    if ( typeof navigator.cascades != 'undefined' ) {
+      	cascadesDebug('bb cascades found, initializing bridge');
+        navigator.cascades.onmessage = function onmessage(message) {
+        	onMessageRecieved(message);
+        }
+      }
+	  </script>
+	  
+	</head>
+	<body>
+	  <div id="chart" style="width: auto; height: 225px">
+	  </div>
+	</body>
+</html>
