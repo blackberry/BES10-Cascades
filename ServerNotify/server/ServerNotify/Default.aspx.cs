@@ -201,7 +201,7 @@ public partial class _Default : System.Web.UI.Page
         {
             HttpWebRequest HttpWReq = (HttpWebRequest)WebRequest.Create(httpURL);
             HttpWReq.Method = ("POST");
-            HttpWReq.Headers.Add("ContentType", "text/plain");
+            HttpWReq.ContentType = "text/plain";
             byte[] data = System.Text.ASCIIEncoding.UTF8.GetBytes(transmitData);
             if (data.Length <= 8192)
             {
