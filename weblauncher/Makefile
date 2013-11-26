@@ -1,4 +1,4 @@
-QMAKE_TARGET  = carousel
+QMAKE_TARGET  = weblauncher
 QMAKE         = $(QNX_HOST)/usr/bin/qmake
 TARGET        = $(QMAKE_TARGET)
 
