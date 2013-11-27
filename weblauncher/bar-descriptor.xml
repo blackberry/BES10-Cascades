@@ -31,7 +31,7 @@
 
     <!-- The name that is displayed in the BlackBerry Tablet OS application installer. 
          May have multiple values for each language. See samples or xsd schema file. Optional. -->
-    <name>CSO Sales Support</name>
+    <name>weblauncher</name>
     
     <!-- A string value of the format <0-999>.<0-999>.<0-999> that represents application version which can be used to check for application upgrade. 
          Values can also be 1-part or 2-part. It is not necessary to have a 3-part value.
@@ -74,19 +74,19 @@
     <!--  The category where the application appears. Either core.games or core.media. -->
     <configuration name="Default">
        <platformArchitecture>armle-v7</platformArchitecture>
-       <asset path="arm/o.le-v7-g/carousel" entry="true" type="Qnx/Elf">carousel</asset>
+       <asset path="arm/o.le-v7-g/weblauncher" entry="true" type="Qnx/Elf">weblauncher</asset>
     </configuration>
     <configuration name="Device-Debug">
        <platformArchitecture>armle-v7</platformArchitecture>
-       <asset path="arm/o.le-v7-g/carousel" entry="true" type="Qnx/Elf">carousel</asset>
+       <asset path="arm/o.le-v7-g/weblauncher" entry="true" type="Qnx/Elf">weblauncher</asset>
     </configuration>
     <configuration name="Device-Release">
        <platformArchitecture>armle-v7</platformArchitecture>
-       <asset path="arm/o.le-v7/carousel" entry="true" type="Qnx/Elf">carousel</asset>
+       <asset path="arm/o.le-v7/weblauncher" entry="true" type="Qnx/Elf">weblauncher</asset>
     </configuration>
     <configuration name="Simulator-Debug">
        <platformArchitecture>x86</platformArchitecture>
-       <asset path="x86/o-g/carousel" entry="true" type="Qnx/Elf">carousel</asset>
+       <asset path="x86/o-g/weblauncher" entry="true" type="Qnx/Elf">weblauncher</asset>
     </configuration>
     
     <!--  The icon for the application, which should be 86x86. -->
