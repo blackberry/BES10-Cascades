@@ -1,0 +1,42 @@
+<model>
+  <column loop="true">
+    <itemyear value="2001" />
+	<itemyear value="2002" />
+	<itemyear value="2003" />
+	<itemyear value="2004" />
+	<itemyear value="2005" />
+	<itemyear value="2006" />
+	<itemyear value="2007" />
+	<itemyear value="2008" />
+	<itemyear value="2009" />
+	<itemyear value="2010" />
+	<itemyear value="2011" />
+	<itemyear value="2012" />
+	<itemyear value="2013" />
+	<itemyear value="2014" />
+  </column>
+  <column loop="true">
+    <itemmake value="Audi">
+    	<itemmodel value="A5" />
+    </itemmake>
+    <itemmake value="BMW">
+    	<itemmodel value="528i" />
+    </itemmake>
+    <itemmake value="Chevy">
+    	<itemmodel value="Malibu" />
+    </itemmake>
+    <itemmake value="Dodge">
+    	<itemmodel value="Caravan" />
+    </itemmake>
+    <itemmake value="Ford">
+    	<itemmodel value="Focus" />
+    	<itemmodel value="Fusion" />
+    	<itemmodel value="Mustang" />
+    </itemmake>
+    <itemmake value="Honda">
+      	<itemmodel value="Accord" />
+    	<itemmodel value="Civic" />
+    	<itemmodel value="Pilot" />  
+    </itemmake>
+  </column>
+</model>
