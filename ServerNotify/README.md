@@ -35,12 +35,20 @@ The sample code for this application is Open Source under the [Apache 2.0 Licens
 4. Modify bar-descriptor.xml source to include your unique invoke-target id:
 ```
 	<invoke-target id="com.abccompany.servernotify">
+	<invoke-target id="com.abccompany.servernotifyservice"> <!-- This line is only for the 10.2.1 version -->
 ```
 
-5. In the src/PushManager.cpp file modify the BLACKBERRY_INVOKE_TARGET_ID to match the unique id you used above
-```
+5. 	a) For the 10.0 version:
+	In the ServerNotify/src/PushManager.cpp file modify the BLACKBERRY_INVOKE_TARGET_ID to match the unique id you used above
+	```
 	const QString PushManager::BLACKBERRY_INVOKE_TARGET_ID = "com.abccompany.servernotify";
-```
+	```
+	b) For the 10.2.1 version:
+	In the ServerNotifyService/src/service.cpp file modify the BLACKBERRY_INVOKE_TARGET_ID to match the unique id you used above
+	```
+	const QString PushManager::BLACKBERRY_INVOKE_TARGET_ID = "com.abccompany.servernotify";
+	```
+	
 
 6. You can modify the BLACKBERRY_PUSH_APPLICATION_ID as well. This has to match the server though.
 7. Build, sign, and export the project. (Create the bar file)
@@ -68,6 +76,7 @@ Usually you can pass the signed bar file to your BES administrator and have them
 
 1. Launch the application once on the device.
 2. Either leave the application open or close it. Now that it has registered with the push service once, the app can receive pushes while open or closed.
+	Note: If using the 10.2.1 version of the application it does not need to be launched to register
 3. Visit the Server page Default.aspx
 4. Enter a server Name and IP and click Add Server. If you want to test failure (when a push occurs) enter an IP address you know will fail
 5. Click Start Monitoring and within the interval you specified a push will occur and you should see the dialog box show up.
