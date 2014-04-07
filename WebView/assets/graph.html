@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+  <script type='text/javascript' src='js/jquery-1.9.1.min.js'></script>
+<script type='text/javascript'>
+//<![CDATA[ 
+$(function () {
+    $('#container').highcharts({
+        chart: {
+            type: 'bar'
+        },
+        title: {
+            text: 'Gas Expiration'
+        },
+        xAxis: {
+            categories: ['This week', 'Next Week', '3 Weeks', '1 Month']
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: 'Gas Points To Use'
+            }
+        },
+        legend: {
+            backgroundColor: '#CCC',
+            reversed: false
+        },
+        plotOptions: {
+            series: {
+                stacking: 'normal'
+            }
+        },
+        series: [{
+            name: 'Rebecca',
+            data: [200, 150, 340 + 45, 15]
+        }, {
+            name: 'Sebastian',
+            data: [100, 180, 0, 731]
+        }]
+    });
+});
+//]]>  
+
+</script>
+
+
+</head>
+
+<body>
+  <script src="js/highcharts.js"></script>
+  <script src="js/modules/exporting.js"></script>
+  <div id="container" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
+</body>
+
+
+</html>
