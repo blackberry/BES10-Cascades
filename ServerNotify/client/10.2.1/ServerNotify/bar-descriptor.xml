@@ -56,51 +56,51 @@
 		<platformArchitecture>armle-v7</platformArchitecture>
 		<entryPointType>Qnx/Elf</entryPointType>
 
-		<asset entryPointId="SimplePushClient" path="arm/o.le-v7-g/SimplePushClient"
-			entry="true" type="Qnx/Elf">SimplePushClient</asset>
-		<asset entryPointId="SimplePushClientService"
-			path="../ServerNotifyService/arm/SimplePushClientService"
-			type="Qnx/Elf">SimplePushClientService</asset>
+		<asset entryPointId="ServerNotifyClient" path="arm/o.le-v7-g/ServerNotifyClient"
+			entry="true" type="Qnx/Elf">ServerNotifyClient</asset>
+		<asset entryPointId="ServerNotifyClientService"
+			path="../ServerNotifyService/arm/ServerNotifyClientService"
+			type="Qnx/Elf">ServerNotifyClientService</asset>
 	</configuration>
 
 	<configuration name="Device-Release">
 		<platformArchitecture>armle-v7</platformArchitecture>
 		<entryPointType>Qnx/Cascades</entryPointType>
 
-		<asset entryPointId="SimplePushClient" path="arm/o.le-v7/SimplePushClient.so"
-			entry="true" type="Qnx/Cascades">SimplePushClient.so</asset>
-		<asset entryPointId="SimplePushClientService"
-			path="../ServerNotifyService/arm/SimplePushClientService"
-			type="Qnx/Elf">SimplePushClientService</asset>
+		<asset entryPointId="ServerNotifyClient" path="arm/o.le-v7/ServerNotifyClient.so"
+			entry="true" type="Qnx/Cascades">ServerNotifyClient.so</asset>
+		<asset entryPointId="ServerNotifyClientService"
+			path="../ServerNotifyService/arm/ServerNotifyClientService"
+			type="Qnx/Elf">ServerNotifyClientService</asset>
 	</configuration>
 
 	<configuration name="Device-Profile">
 		<platformArchitecture>armle-v7</platformArchitecture>
 		<entryPointType>Qnx/Elf</entryPointType>
 
-		<asset entryPointId="SimplePushClient" path="arm-p/o.le-v7-g/SimplePushClient"
-			entry="true" type="Qnx/Elf">SimplePushClient</asset>
-		<asset entryPointId="SimplePushClientService"
-			path="../ServerNotifyService/arm/SimplePushClientService"
-			type="Qnx/Elf">SimplePushClientService</asset>
+		<asset entryPointId="ServerNotifyClient" path="arm-p/o.le-v7-g/ServerNotifyClient"
+			entry="true" type="Qnx/Elf">ServerNotifyClient</asset>
+		<asset entryPointId="ServerNotifyClientService"
+			path="../ServerNotifyService/arm/ServerNotifyClientService"
+			type="Qnx/Elf">ServerNotifyClientService</asset>
 	</configuration>
 
 	<configuration name="Simulator-Debug">
 		<platformArchitecture>x86</platformArchitecture>
 		<entryPointType>Qnx/Elf</entryPointType>
 
-		<asset entryPointId="SimplePushClient" path="x86/o-g/SimplePushClient"
-			entry="true" type="Qnx/Elf">SimplePushClient</asset>
-		<asset entryPointId="SimplePushClientService"
-			path="../ServerNotifyService/x86/SimplePushClientService"
-			type="Qnx/Elf">SimplePushClientService</asset>
+		<asset entryPointId="ServerNotifyClient" path="x86/o-g/ServerNotifyClient"
+			entry="true" type="Qnx/Elf">ServerNotifyClient</asset>
+		<asset entryPointId="ServerNotifyClientService"
+			path="../ServerNotifyService/x86/ServerNotifyClientService"
+			type="Qnx/Elf">ServerNotifyClientService</asset>
 	</configuration>
 
-	<entryPoint id="SimplePushClient">
-		<name>SimplePushClient</name>
+	<entryPoint id="ServerNotifyClient">
+		<name>ServerNotifyClient</name>
 	</entryPoint>
 
-	<entryPoint id="SimplePushClientService">
+	<entryPoint id="ServerNotifyClientService">
 		<name>Server Notify Service</name>
 		<entryPointType>Qnx/Elf</entryPointType>
 	</entryPoint>
@@ -108,7 +108,7 @@
 	<invoke-target id="com.abccompany.servernotifyservice">
 		<invoke-target-type>application.headless</invoke-target-type>
 		<invoke-target-name>Server Notify Service</invoke-target-name>
-		<entry-point-id>SimplePushClientService</entry-point-id>
+		<entry-point-id>ServerNotifyClientService</entry-point-id>
 		<filter>
 			<action>bb.action.system.STARTED</action>
 			<mime-type>application/vnd.blackberry.system.event.STARTED</mime-type>
@@ -127,7 +127,7 @@
 	<invoke-target id="com.abccompany.servernotify">
 		<invoke-target-type>application</invoke-target-type>
 		<invoke-target-name>Server Notify</invoke-target-name>
-		<entry-point-id>SimplePushClient</entry-point-id>
+		<entry-point-id>ServerNotifyClient</entry-point-id>
 	</invoke-target>
 
 
@@ -144,11 +144,14 @@
 	<asset path="translations" dest="qm">
 		<include name="*.qm" />
 	</asset>
- <asset path="simplePushClient.png">simplePushClient.png</asset>
+ <asset public="true" path="simplePushClient.png">simplePushClient.png</asset>
+ <asset public="true" path="alert.wav">alert.wav</asset>
+ <asset public="true" path="alert.png">alert.png</asset>
 
 	<!-- Request permission to run a backend headless process and post notification. -->
 	<permission system="true">_sys_run_headless</permission>
 	<permission>post_notification</permission>
+	<permission>access_notify_settings_control</permission>
 	 <permission>read_device_identifying_information</permission>
 	 <permission>access_internet</permission>
 	 <permission>run_when_backgrounded</permission>
