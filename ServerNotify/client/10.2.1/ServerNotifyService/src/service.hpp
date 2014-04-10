@@ -54,6 +54,7 @@ private slots:
 	void createSessionCompleted(const bb::network::PushStatus&);
 	void createChannelCompleted(const bb::network::PushStatus&, const QString&);
 	void changeBackNotification();
+	void exitApp();
 
 private:
 	void triggerNotification();

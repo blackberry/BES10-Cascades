@@ -250,8 +250,10 @@ void Service::log(const QString &toLog) {
 void Service::changeBackNotification(){
     globalSettings->setVolume(oldVolume);
 	globalSettings->setMode(oldMode);
-	qDebug() << bb::Application::instance()->requestExit();
+	QTimer::singleShot(2000, this, SLOT(exitApp()) ); //give the app time to set the mode back before exiting
 }
 
-
+void Service::exitApp(){
+    qDebug() << bb::Application::instance()->requestExit();
+}
 
