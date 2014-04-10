@@ -1,0 +1,7 @@
+com.rim.tad.tools.wst.jsdt.ui.exception.name=e
+com.rim.tad.tools.wst.jsdt.ui.gettersetter.use.is=true
+com.rim.tad.tools.wst.jsdt.ui.javadoc=false
+com.rim.tad.tools.wst.jsdt.ui.keywordthis=false
+com.rim.tad.tools.wst.jsdt.ui.overrideannotation=true
+com.rim.tad.tools.wst.jsdt.ui.text.custom_code_templates=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?><templates/>
+eclipse.preferences.version=1
