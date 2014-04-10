@@ -21,12 +21,14 @@
 #include <QVariantList>
 
 #include <bb/network/PushService>
+#include <bb/platform/NotificationGlobalSettings>
 
 namespace bb {
 class Application;
 namespace platform {
 class Notification;
 class NotificationDialog;
+class NotificationGlobalSettings;
 }
 namespace system {
 class InvokeManager;
@@ -51,6 +53,7 @@ private slots:
 	void handleInvoke(const bb::system::InvokeRequest &);
 	void createSessionCompleted(const bb::network::PushStatus&);
 	void createChannelCompleted(const bb::network::PushStatus&, const QString&);
+	void changeBackNotification();
 
 private:
 	void triggerNotification();
@@ -58,6 +61,7 @@ private:
 	static const QString BLACKBERRY_PUSH_APPLICATION_ID;
 	static const QString BLACKBERRY_PUSH_URL;
 	static const QString BLACKBERRY_INVOKE_TARGET_ID;
+	static const QString SERVER_NOTIFY_GUI_INVOKE_TARGET_ID;
 
 	bool m_shouldChannelBeCreated;
 
@@ -68,7 +72,11 @@ private:
 
 	void log(const QString &);
 	void logPush(const QString &);
-	void handlePush(const QString &, const QString &);
+	void handlePush(int, const QString &, const QString &);
+
+	bb::platform::NotificationGlobalSettings* globalSettings;
+    bb::platform::NotificationMode::Type oldMode;
+    int oldVolume;
 
 };
 

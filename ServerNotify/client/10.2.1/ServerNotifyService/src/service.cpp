@@ -16,8 +16,14 @@
 #include "service.hpp"
 #include <bb/Application>
 #include <bb/platform/Notification>
+#include <bb/platform/NotificationDialog>
+#include <bb/platform/NotificationDefaultApplicationSettings>
+#include <bb/platform/NotificationGlobalSettings>
 #include <bb/system/InvokeManager>
 #include <bb/system/InvokeRequest>
+#include <bb/system/SystemUiButton>
+#include <bb/system/SystemUiModality>
+#include <bb/system/SystemDialog>
 #include <bb/network/PushStatus>
 #include <bb/network/PushPayload>
 
@@ -26,8 +32,7 @@ using namespace bb::system;
 using namespace bb::network;
 
 // The following strings must be updated to use the values of the app in your environment
-const QString Service::BLACKBERRY_PUSH_APPLICATION_ID =
-		"bb_server_notify";
+const QString Service::BLACKBERRY_PUSH_APPLICATION_ID = "bb_server_notify";
 
 // Not needed for BDS push so leave blank
 const QString Service::BLACKBERRY_PUSH_URL = "";
@@ -35,6 +40,9 @@ const QString Service::BLACKBERRY_PUSH_URL = "";
 // Update this value as well as the invoke-target id in the bar-descriptor.xml file
 const QString Service::BLACKBERRY_INVOKE_TARGET_ID =
 		"com.abccompany.servernotifyservice";
+
+const QString Service::SERVER_NOTIFY_GUI_INVOKE_TARGET_ID =
+		"com.abccompany.servernotify";
 
 Service::Service(bb::Application * app) :
 		QObject(app), m_invokeManager(new InvokeManager(this)), m_pushService(
@@ -60,6 +68,24 @@ Service::Service(bb::Application * app) :
 	connect(m_pushService,
 			SIGNAL(createChannelCompleted (const bb::network::PushStatus &, const QString &)),
 			SLOT(createChannelCompleted(const bb::network::PushStatus &, const QString &)));
+
+	//to save and set global notification settings for urgent items
+	globalSettings = new NotificationGlobalSettings();
+
+	//Control previews in settings
+	bb::platform::NotificationDefaultApplicationSettings settings;
+
+	settings.setPreview(bb::platform::NotificationPriorityPolicy::Allow);
+	settings.setVibrate(bb::platform::NotificationPolicy::Allow);
+	settings.setVibrateCount(5);
+	settings.setLed(bb::platform::NotificationPolicy::Allow);
+	settings.setSound(bb::platform::NotificationPolicy::Allow);
+	qDebug() << "NotificationPriorityPolicy:" << settings.apply();
+
+	const QString workingDir = QDir::currentPath();
+	const QString alertPath = QString::fromLatin1(
+			"file://%1/app/public/alert.wav").arg(workingDir);
+	settings.setTonePath(QUrl(alertPath));
 
 }
 
@@ -108,13 +134,17 @@ void Service::handleInvoke(const bb::system::InvokeRequest & request) {
 			}
 
 			//Pass it to our method which will store the push in a nice format
+			log("logPush");
 			logPush(message);
 
-			handlePush(messageParts.at(1), messageParts.at(2));
+			log("handlePush");
+			handlePush(messageParts.at(0).toInt(), messageParts.at(1),
+					messageParts.at(2));
 		}
 	} else if (request.action().compare(
 			"com.abccompany.servernotify.CLEAR_HISTORY") == 0) {
 		m_settings.setValue("pushList", "");
+		log("com.abccompany.servernotify.CLEAR_HISTORY");
 		qDebug() << bb::Application::instance()->requestExit();
 	}
 }
@@ -170,17 +200,45 @@ void Service::logPush(const QString & pushMessage) {
  *        o        Does whatever the system specifies (sounds, LED, vibration)
  */
 
-void Service::handlePush(const QString & title, const QString & body) {
+void Service::handlePush(int priority, const QString & title,
+		const QString & body) {
+
+	//Clear any existing notifications
+	Notification::clearEffectsForAll();
+	Notification::deleteAllFromInbox();
+
+	//save old notification settings for switching back
+    oldMode = globalSettings->mode();
+    oldVolume = globalSettings->volume();
+
+    globalSettings->setMode(NotificationMode::Normal);
+    globalSettings->setVolume(100);
+
 	Notification* notification = new Notification();
 	notification->setTitle(title);
 	notification->setBody(body);
+	const QString workingDir = QDir::currentPath();
+
+	if (priority == 2) {
+		const QString alertPath = QString::fromLatin1(
+				"file://%1/app/public/alert.wav").arg(workingDir);
+		notification->setSoundUrl(QUrl(alertPath));
+	}
+
+	const QString iconPath = QString::fromLatin1(
+			"file://%1/app/public/simplePushClient.png").arg(workingDir);
+	notification->setIconUrl(QUrl(iconPath));
 
 	InvokeRequest invokeRequest;
-	invokeRequest.setTarget("com.abccompany.servernotify");
+	invokeRequest.setTarget(SERVER_NOTIFY_GUI_INVOKE_TARGET_ID);
 
 	notification->setInvokeRequest(invokeRequest);
 	notification->notify();
-	qDebug() << bb::Application::instance()->requestExit();
+
+	//reset the global notification settings
+	QTimer::singleShot(5000, this, SLOT(changeBackNotification()) );
+
+
 }
 
 //A log method to output to the console
@@ -188,4 +246,12 @@ void Service::log(const QString &toLog) {
 	qDebug() << toLog;
 	m_settings.setValue("logger", toLog);
 }
+
+void Service::changeBackNotification(){
+    globalSettings->setVolume(oldVolume);
+	globalSettings->setMode(oldMode);
+	qDebug() << bb::Application::instance()->requestExit();
+}
+
+
 
