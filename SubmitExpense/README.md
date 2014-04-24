@@ -1,4 +1,4 @@
-Submit Exspense
+Submit Expense
 ================
 
 Submit Expense - Submit Expense is BlackBerry 10 native demo app.  This demo application was created in partnership with Macadamian (http://www.macadamian.com/).  Although this demo application stands on its own it has minor integration with the Expense Report application.
