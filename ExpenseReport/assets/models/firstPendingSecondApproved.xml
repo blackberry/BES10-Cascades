@@ -1,0 +1,6 @@
+<root>
+  <header title="All Reports" />
+
+  <item fullName="Donald, Stewart" firstName="Stewart" lastName="Donald" total="$91.19" image= "asset:///images/display_steward_donald.png" imageBack= "asset:///images/CellBack.png" sideContainerColor="#319b01" containerColor="#666666" expenseGroup="Client Entertainment" opacity="1.0" codeRedStatus="" projectStatus="Submitted" projectStatusDate="Yesterday" />
+  <item fullName="Smith, John" firstName="John" lastName="Smith" total="$55.97" image= "asset:///images/display_john_smith.png" imageBack= "asset:///images/CellBackg.png"  sideContainerColor="#319b01" containerColor="#62052e" expenseGroup="Training" opacity="0.7" codeRedStatus="Over Budget Limit" projectStatus="Approved" projectStatusDate="Just Now" />
+</root>

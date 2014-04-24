@@ -1,0 +1,13 @@
+<root>
+  <header title="Blue Line Taxi" total= "$11.11" image="asset:///images/blue_line_text_receipt.jpeg" />
+  <item text="Taxi" total="$11.11" cellDividerColor="#111111" />
+
+  <header title="Le Mirage" total= "$80.08" image="asset:///images/le_mirage_receipt.jpeg" />
+  <item text="Quesadilla au poulet" total="$8.95" cellDividerColor="#444444" />
+  <item text="Fish and chips" total="$29.85" cellDividerColor="#444444" />
+  <item text="Broch. poulet" total="$11.95" cellDividerColor="#444444" />
+  <item text="Le club" total="$8.95" cellDividerColor="#444444" />
+  <item text="Smoke/Meat/Dill" total="$9.95" cellDividerColor="#444444" />
+  <item text="TPS 1" total="$3.48" cellDividerColor="#444444" />
+  <item text="TVQ" total="$6.95" cellDividerColor="#111111" />
+</root>

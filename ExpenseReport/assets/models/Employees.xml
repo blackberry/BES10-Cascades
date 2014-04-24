@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="iso-8859-1" standalone="yes"?>
+<employees>
+  <employee>
+    <employeeID>be119</employeeID>
+    <firstname>Jane</firstname>
+    <lastname>Doe</lastname>
+    <Sex>Female</Sex>
+    <Address>
+      <Street>7A Cox Street</Street>
+      <City>Los Angeles</City>
+      <State>CA</State>
+      <Zip>95220</Zip>
+      <Country>USA</Country>
+    </Address>
+    <title>Engineer</title>
+    <isManager>no</isManager>
+    <managers>
+      <manager>be222</manager>
+    </managers>
+  </employee>
+  <employee>
+    <employeeID>be109></employeeID>
+    <firstname>William</firstname>
+    <lastname>Defoe</lastname>
+    <Sex>Male</Sex>
+    <Address>
+      <Street>7A Cox Street</Street>
+      <City>San Diego</City>
+      <State>CA</State>
+      <Zip>95220</Zip>
+      <Country>USA</Country>
+    </Address>
+    <title>Accountant</title>
+    <isManager>no</isManager>
+    <managers>
+      <manager>be135</manager>
+    </managers>
+  </employee>
+  <employee>
+    <employeeID>be222</employeeID>
+    <firstname>Jack</firstname>
+    <lastname>Dee</lastname>
+    <Sex>Male</Sex>
+    <Address>
+      <Street>7A Cox Street</Street>
+      <City>Orlando</City>
+      <State>FL</State>
+      <Zip>95220</Zip>
+      <Country>USA</Country>
+    </Address>
+    <title>Manager</title>
+    <isManager>yes</isManager>
+    <managers>
+    </managers>
+  </employee>
+  <employee>
+    <employeeID>be132></employeeID>
+    <firstname>Sandra</firstname>
+    <lastname>Rogers</lastname>
+    <Sex>Female</Sex>
+    <Address>
+      <Street>7A Cox Street</Street>
+      <City>Miami</City>
+      <State>FL</State>
+      <Zip>95220</Zip>
+      <Country>USA</Country>
+    </Address>
+    <title>Engineering</title>
+    <isManager>no</isManager>
+    <managers>
+      <manager>be135</manager>
+    </managers>
+  </employee>
+  <employee>
+    <employeeID>be111></employeeID>
+    <firstname>Steve</firstname>
+    <lastname>Casey</lastname>
+    <Sex>Male</Sex>
+    <Address>
+      <Street>76 Knowlton Street</Street>
+      <City>Miami</City>
+      <State>FL</State>
+      <Zip>95220</Zip>
+      <Country>USA</Country>
+    </Address>
+    <title>Engineer</title>
+    <isManager>no</isManager>
+    <managers>
+      <manager>be135</manager>
+    </managers>
+  </employee>
+  <employee>
+    <employeeID>be135</employeeID>
+    <firstname>Michelle</firstname>
+    <lastname>Michaels</lastname>
+    <Sex>Female</Sex>
+    <Address>
+      <Street>7 Sutton Street</Street>
+      <City>Richmond</City>
+      <State>VT</State>
+      <Zip>95220</Zip>
+      <Country>USA</Country>
+    </Address>
+    <title>CEO</title>
+    <isManager>yes</isManager>
+    <managers>
+    </managers>
+  </employee>
+  <employee>
+    <employeeID>be351</employeeID>
+    <Name>Sam</Name>   
+    <lastname>Recordgirl</lastname>
+    <Sex>Female</Sex>
+    <Address>
+      <Street>7th Avenue</Street>
+      <City>New York</City>
+      <State>NY</State>
+      <Zip>95220</Zip>
+      <Country>USA</Country>
+    </Address>
+    <title>secretary</title>
+    <isManager>no</isManager>
+    <managers>
+      <manager>be135</manager>
+    </managers>
+  </employee>
+  <employee>
+    <employeeID>be152</employeeID>
+    <firstname>Lucy</firstname>
+    <lastname>Fern</lastname>
+    <Sex>Female</Sex>
+    <Address>
+      <Street>Jess Bay</Street>
+      <City>Alta</City>
+      <State>CA</State>
+      <Zip>95701</Zip>
+      <Country>USA</Country>
+    </Address>
+    <title>software developer</title>
+    <isManager>no</isManager>
+    <managers>
+      <manager>be222</manager>
+    </managers>
+  </employee>
+  <employee>
+    <employeeID>be195</employeeID>
+    <firstname>Kate</firstname>
+    <lastname>Dobbs</lastname>
+    <Sex>Female</Sex>
+    <Address>
+      <Street>23 Boxen Street</Street>
+      <City>Milford</City>
+      <State>CA</State>
+      <Zip>96121</Zip>
+      <Country>USA</Country>
+    </Address>
+    <title>software tester</title>
+    <isManager>no</isManager>
+    <managers>
+      <manager>be222</manager>
+    </managers>
+  </employee>
+  <employee>
+    <employeeID>be174</employeeID>
+    <firstname>Christopher</firstname>
+    <lastname>Dee</lastname>
+    <Sex>Male</Sex>
+    <Address>
+      <Street>124 Kutbay</Street>
+      <City>Montara</City>
+      <State>CA</State>
+      <Zip>94037</Zip>
+      <Country>USA</Country>
+    </Address>
+    <title>software tester</title>
+    <isManager>no</isManager>
+    <managers>
+      <manager>be135</manager>
+      <manager>be222</manager>
+    </managers>
+  </employee>
+</employees>

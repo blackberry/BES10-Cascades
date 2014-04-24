@@ -1,0 +1,12 @@
+<root>
+  <header title="Centre Citipark" total= "$15.00" image="asset:///images/centre_rideau_receipt.jpeg" />
+  <item  text="Parking Fee" total="$15.00" cellDividerColor="#111111" />
+
+  <header title="Must Buy" total= "$35.02" image="asset:///images/must_buy_receipt.jpg" />
+  <item  text="Canon Black Ink" total="$15.99" cellDividerColor="#444444" />
+  <item  text="HP Black Ink" total="$15.99" cellDividerColor="#444444" />
+  <item  text="Tax amount" total="$3.04" cellDividerColor="#111111" />
+
+  <header title="Subway" total= "$5.95" image="asset:///images/subway_receipt.jpeg" />
+  <item  text="Pouces Club" total="$5.95" cellDividerColor="#111111" />
+</root>
