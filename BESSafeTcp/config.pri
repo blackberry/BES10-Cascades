@@ -42,7 +42,7 @@ config_pri_source_group1 {
     SOURCES += \
         $$quote($$BASEDIR/src/BESConnect.cpp) \
         $$quote($$BASEDIR/src/BESSafeTcp.cpp) \
-        $$quote($$BASEDIR/src/curllConnectThread.cpp) \
+        $$quote($$BASEDIR/src/curlConnectThread.cpp) \
         $$quote($$BASEDIR/src/main.cpp) \
         $$quote($$BASEDIR/src/sslSocketThread.cpp) \
         $$quote($$BASEDIR/src/tcpSocketThread.cpp)

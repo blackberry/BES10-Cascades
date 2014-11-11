@@ -1,13 +1,5 @@
-// Default empty project template
-#ifndef BESSafeTcp_HPP_
-#define BESSafeTcp_HPP_
-
-#include <QObject>
-
-#include <bb/cascades/TextArea>
-
 /*
- * Copyright (c) 2012-2014 Research In Motion Limited.
+ * Copyright (c) 2012-2014 BlackBerry Limited.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,6 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+#ifndef BESSafeTcp_HPP_
+#define BESSafeTcp_HPP_
+
+#include <QObject>
+
+#include <bb/cascades/TextArea>
 
 namespace bb { namespace cascades { class Application; }}
 

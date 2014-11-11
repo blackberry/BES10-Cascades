@@ -9,7 +9,7 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="11"/>
+        <location filename="../assets/main.qml" line="26"/>
         <source>Hello BESSafeTcp</source>
         <translation type="unfinished"></translation>
     </message>

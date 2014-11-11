@@ -1,4 +1,19 @@
-// Default empty project template
+/*
+ * Copyright (c) 2012-2014 BlackBerry Limited.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 import bb.cascades 1.0
 import bb.besutil 1.0
 
@@ -86,23 +101,7 @@ Page {
                     besConnect.testBSDTcpSockets();
                 }
             }
-/*            
-            // test Curl OpenSSL button.
-            Button {
-                id: curlOpensslButton
-                text: "Test SSL Sockets with CURL HTTP tunnel"
-                topMargin: 20
-                rightMargin: 200
-                preferredWidth: 250
-                horizontalAlignment: HorizontalAlignment.Center
-                verticalAlignment: VerticalAlignment.Center
-                
-                // Change the button text on click and hide the fruit button.
-                onClicked: {
-                    besConnect.testCurlProxyOpenSSLSockets();
-                }
-            }
-*/            
+            
             // test BSD Tcp button.
             Button {
                 id: curlButton
@@ -121,7 +120,7 @@ Page {
         TextArea {
             objectName: "console"
             text: qsTr("")
-            textStyle.base: SystemDefaults.TextStyles.SmallText
+            textStyle.base: SystemDefaults.TextStyles.NormalText
             verticalAlignment: VerticalAlignment.Bottom
             horizontalAlignment: HorizontalAlignment.Fill
         }

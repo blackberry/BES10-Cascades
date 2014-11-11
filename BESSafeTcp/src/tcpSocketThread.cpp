@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012-2014 Research In Motion Limited.
+ * Copyright (c) 2012-2014 BlackBerry Limited.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -51,9 +51,10 @@ TCPSocketThread::~TCPSocketThread() {
 
 void TCPSocketThread::run()
 {
-	const char* hostName = "developer.blackberry.com"; // The host that you're connecting to
+    const char* hostName = "developer.blackberry.com"; // The host that you're connecting to
+
 	const int port = 80;
-	const char *httpRequest = "GET / HTTP/1.1\r\nHost: developer.blackberry.com\r\n\r\n";
+    const char *httpRequest = "GET / HTTP/1.1\r\nHost: developer.blackberry.com\r\n\r\n";
 	unsigned int bytesRead = 0, bytesWritten = 0;
 	int error, responseCount = 0;
 	static fd_set write_handles;
